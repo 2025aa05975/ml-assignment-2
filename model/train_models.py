@@ -22,10 +22,7 @@ from sklearn.metrics import (
 )
 
 
-def load_dataset():
-    # Load dataset
-    data = pd.read_csv("bank.csv", sep=";")
-
+def preprocess_data(data):
     # Encode categorical columns
     for col in data.columns:
         if data[col].dtype == "object":
@@ -35,7 +32,6 @@ def load_dataset():
     X = data.drop("y", axis=1)
     y = data["y"]
 
-    # Scale features
     scaler = StandardScaler()
     X = scaler.fit_transform(X)
 
@@ -45,14 +41,13 @@ def load_dataset():
 def calculate_metrics(model, X_test, y_test):
     y_pred = model.predict(X_test)
 
-    # For AUC (binary case)
     if hasattr(model, "predict_proba"):
         y_prob = model.predict_proba(X_test)[:, 1]
         auc = roc_auc_score(y_test, y_prob)
     else:
-        auc = 0
+        auc = 0.0
 
-    results = {
+    return {
         "Accuracy": accuracy_score(y_test, y_pred),
         "AUC": auc,
         "Precision": precision_score(y_test, y_pred),
@@ -62,11 +57,9 @@ def calculate_metrics(model, X_test, y_test):
         "Confusion Matrix": confusion_matrix(y_test, y_pred)
     }
 
-    return results
 
-
-def train_all_models():
-    X_train, X_test, y_train, y_test = load_dataset()
+def train_all_models(data):
+    X_train, X_test, y_train, y_test = preprocess_data(data)
 
     models = {
         "Logistic Regression": LogisticRegression(max_iter=1000),
@@ -77,10 +70,10 @@ def train_all_models():
         "XGBoost": XGBClassifier(use_label_encoder=False, eval_metric="logloss")
     }
 
-    final_results = {}
+    results = {}
 
     for name, model in models.items():
         model.fit(X_train, y_train)
-        final_results[name] = calculate_metrics(model, X_test, y_test)
+        results[name] = calculate_metrics(model, X_test, y_test)
 
-    return final_results
+    return results
