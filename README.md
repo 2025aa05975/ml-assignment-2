@@ -35,36 +35,37 @@ The following six machine learning classification models were implemented and ev
 
 ### Comparison Table
 
-| ML Model Name | Accuracy | AUC | Precision | Recall | F1 Score | MCC |
-|--------------|----------|------|-----------|--------|----------|------|
-| Logistic Regression | 0.8950 | 0.8197 | 0.5000 | 0.1579 | 0.2400 | 0.2386 |
-| Decision Tree | 0.8950 | 0.6626 | 0.5000 | 0.3684 | 0.4242 | 0.3731 |
-| kNN | 0.8840 | 0.6462 | 0.2500 | 0.0526 | 0.0870 | 0.0711 |
-| Naive Bayes | 0.8508 | 0.7511 | 0.3182 | 0.3684 | 0.3415 | 0.2587 |
-| Random Forest (Ensemble) | 0.9061 | 0.9019 | 0.7500 | 0.1579 | 0.2609 | 0.3163 |
-| XGBoost (Ensemble) | 0.8950 | 0.8441 | 0.5000 | 0.2632 | 0.3448 | 0.3117 |
+| ML Model Name       | Accuracy | AUC    | Precision | Recall  | F1 Score | MCC    |
+|--------------------|---------|--------|-----------|--------|----------|--------|
+| Decision Tree      | 0.8630  | 0.6497 | 0.3700    | 0.3776 | 0.3737   | 0.2968 |
+| KNN                | 0.8950  | 0.7250 | 0.5385    | 0.2143 | 0.3066   | 0.2938 |
+| Logistic Regression| 0.8928  | 0.8634 | 0.5152    | 0.1735 | 0.2595   | 0.2547 |
+| Naive Bayes        | 0.8376  | 0.8009 | 0.3185    | 0.4388 | 0.3691   | 0.2833 |
+| Random Forest      | 0.9028  | 0.9160 | 0.6000    | 0.3061 | 0.4054   | 0.3827 |
+| XGBoost            | 0.8751  | 0.8215 | 0.4336    | 0.5000 | 0.4645   | 0.3955 |
 
 ---
 
 ## d. Observations on Model Performance 
 
-| ML Model Name | Observation about model performance |
-|--------------|-------------------------------------|
-| Logistic Regression | Acts as a strong baseline model with good accuracy and AUC, but low recall indicates difficulty in identifying positive cases. |
-| Decision Tree | Achieves better recall and F1 score compared to Logistic Regression, but shows lower AUC, indicating weaker ranking capability. |
-| kNN | Exhibits lower recall and MCC, suggesting sensitivity to class imbalance and dependence on distance-based classification. |
-| Naive Bayes | Provides moderate performance with balanced recall and F1 score, despite its strong independence assumptions. |
-| Random Forest (Ensemble) | Achieves the highest accuracy and AUC, indicating strong overall performance, though recall remains limited. |
-| XGBoost (Ensemble) | Shows strong AUC and balanced F1 score, providing improved performance through boosted ensemble learning. |
+| ML Model Name       | Observation about model performance |
+|--------------------|-------------------------------------|
+| Decision Tree      | Good overall accuracy, but low precision and F1, indicating difficulty in predicting positive class accurately. |
+| KNN                | High accuracy but very low recall, missing many positive cases; sensitive to class imbalance. |
+| Logistic Regression| High accuracy but extremely low recall, poor at detecting positive class. |
+| Naive Bayes        | Moderate accuracy, better recall than precision, suggests bias toward predicting positives. |
+| Random Forest      | Highest accuracy and good overall balance of metrics; ensemble reduces overfitting. |
+| XGBoost            | Slightly lower accuracy than Random Forest but better recall and F1; handles class imbalance well. |
 
 ---
 
 ## Deployment
 
 The machine learning models are deployed using a Streamlit web application. The application provides:
-- CSV dataset upload option (test data)
-- Model selection dropdown
-- Display of evaluation metrics
-- Confusion matrix visualization
+
+- CSV dataset upload option (test data)  
+- Model selection dropdown  
+- Display of evaluation metrics  
+- Confusion matrix visualization  
 
 The application was deployed using Streamlit Community Cloud.
