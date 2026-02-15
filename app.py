@@ -45,7 +45,8 @@ selected_model = st.selectbox(
 
 if uploaded_file is not None:
 
-    data = pd.read_csv(uploaded_file)
+    data = pd.read_csv(uploaded_file, sep=";")
+    data.columns = data.columns.str.strip().str.lower()
 
     X = data.drop("y", axis=1)
     y = data["y"]
