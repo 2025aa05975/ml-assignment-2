@@ -6,7 +6,7 @@ The objective of this assignment is to build, evaluate, and compare multiple mac
 
 ---
 
-## b. Dataset Description  [1 Mark]
+## b. Dataset Description
 
 The Bank Marketing dataset is used for this assignment. The dataset contains information related to marketing campaigns conducted by a banking institution. The objective is to predict whether a client will subscribe to a term deposit, making it a binary classification problem.
 
@@ -20,7 +20,7 @@ The dataset consists of both categorical and numerical features. Categorical var
 
 ---
 
-## c. Models Used and Evaluation Metrics  [6 Marks]
+## c. Models Used and Evaluation Metrics
 
 The following six machine learning classification models were implemented and evaluated using standard performance metrics:
 
@@ -46,7 +46,7 @@ The following six machine learning classification models were implemented and ev
 
 ---
 
-## d. Observations on Model Performance  [3 Marks]
+## d. Observations on Model Performance 
 
 | ML Model Name | Observation about model performance |
 |--------------|-------------------------------------|
